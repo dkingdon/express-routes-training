@@ -22,6 +22,30 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // ROUTES
 // Root Route
+  app.get('/', function (req, res) {
+    res.sendFile('views/index.html', { root : __dirname });
+  });
+
+  var targetNumber = 14;
+
+  app.get('/pick-a-number', function (req, res) {
+    var num = parseInt(req.query.number);
+    if (num === targetNumber) {
+      res.send("Nailed It!");
+    }
+    else if (num > targetNumber) {
+      res.send('Too high');
+    }
+    else if (num < targetNumber){
+      res.send('Too low');
+    }
+    else {
+      console.log('severside GET error ', targetNumber);
+      res.send('error on server side');
+    }
+  })
+
+
 
 
 // Gallery View Route

@@ -1,5 +1,9 @@
 #Training: Express Routing Practice
 
+## Assignment
+* Link to original repo: https://github.com/sf-wdi-33/express-routes-training
+* Continuing to need to look at references to help guide me in the right direction. I think repetition will help if I can find the time.  
+
 ### Deliverable
 
 1. When you wrap up work, edit this README to include your name, a link to the original repository, and a 3-5 sentence reflection on completing this assignment at the top of the document.

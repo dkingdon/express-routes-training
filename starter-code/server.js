@@ -26,6 +26,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
     res.sendFile('views/index.html', { root : __dirname });
   });
 
+    // pick a number guess
   var targetNumber = 14;
 
   app.get('/pick-a-number', function (req, res) {
@@ -44,6 +45,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
       res.send('error on server side');
     }
   })
+
+  // pick a number change target number
+  app.post('/pick-a-number', function(req, res){
+    targetNumber = parseInt(req.body.number);
+    res.status(200).send('Number updated successfully!');
+  });
 
 
 

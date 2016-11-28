@@ -7,8 +7,8 @@ $(document).ready(function(){
   $('#guess-number-form').on('submit', function(e){
     e.preventDefault();
     $.ajax({
-      url: '/pick-a-number',
       method: 'GET',
+      url: '/pick-a-number',
       data: $('#guess-number-form').serialize(),
       success: handleSuccess,
       error: function (){
@@ -18,11 +18,48 @@ $(document).ready(function(){
   });
 
 
+  /* - - - Handles changes target number - - - */
+  $('#target-number-form').on('submit', function(e) {
+    e.preventDefault();
+    $.ajax({
+      method: 'POST',
+      url: '/pick-a-number',
+      data: $('#target-number-form').serialize(),
+      success: handleChangeTargetSuccess,
+      error: function () {
+        console.log('ajax error changing numbers');
+      }
+    });
+  });
 
+///////////////////////////////////////
+  // $('#target-number-form').on('submit', function(event){
+  //   event.preventDefault();
+  //   $.ajax({
+  //     url: '/pick-a-number',
+  //     method: 'POST',
+  //     data: $('#target-number-form').serialize(),
+  //     success: handleTargetChangeSuccess,
+  //     error: handleError
+  //   });
+  // });
+  //
+  // function handleTargetChangeSuccess(targetResponse){
+  //   console.log(targetResponse);
+  //   $('#target-number-form')[0].reset();
+  // }
+  //
 
 }); // End of Doc Ready.
 
+    //handles pick a number success
     function handleSuccess(response){
       console.log(response);
       $('#high-low-correct').html(response);
+    }
+
+    //handles change target number success
+    function handleChangeTargetSuccess(response) {
+      console.log(response);
+      $('#target-number-form')[0].reset();
     }

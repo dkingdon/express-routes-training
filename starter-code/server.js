@@ -26,6 +26,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
     res.sendFile('views/index.html', { root : __dirname });
   });
 
+  app.get('/art-gallery', function (req, res) {
+    res.sendFile('views/art-gallery.html', { root : __dirname});
+  });
+
     // pick a number guess
   var targetNumber = 14;
 
@@ -53,9 +57,23 @@ app.use(bodyParser.urlencoded({ extended: false }));
   });
 
 
-
-
 // Gallery View Route
+
+  var artworks = [];
+
+  app.get('/artworks', function(req, res) {
+    res.json(artworks);
+  });
+
+  app.post('/artworks', function(req, res) {
+    var newArtwork = {
+      name: req.body.title,
+      description: req.body.description,
+      artist: req.body.artist,
+    };
+    artworks.push(newArtwork);
+    res.json(artworks);
+  })
 
 
 // The Number Guessing Game
